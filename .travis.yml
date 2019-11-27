@@ -1,0 +1,18 @@
+language: c
+os: linux
+dist: bionic
+compiler: gcc
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get -y install ncurses-dev bc bison flex
+  - export KERNEL_URL=$(wget -qO- https://www.kernel.org | grep downloadarrow_small.png | cut -d'"' -f2)
+  - wget -q $KERNEL_URL
+  - tar -xf linux-*.tar.xz
+
+script:
+  - export ARCH=um 
+  - export KCONFIG_ALLCONFIG=../uml.config
+  - cd $(ls -d linux-*)
+  - make allnoconfig
+  - make -s vmlinux

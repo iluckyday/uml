@@ -6,8 +6,7 @@ compiler: gcc
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get -y install ncurses-dev bc bison flex
-  - export KERNEL_URL=$(wget -qO- https://www.kernel.org | grep downloadarrow_small.png | cut -d'"' -f2)
-  - wget -q $KERNEL_URL
+  - wget -q $(wget -qO- https://www.kernel.org | grep downloadarrow_small.png | cut -d'"' -f2)
   - tar -xf linux-*.tar.xz
 
 script:

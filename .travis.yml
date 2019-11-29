@@ -12,6 +12,6 @@ before_install:
 script:
   - export ARCH=um 
   - export KCONFIG_ALLCONFIG=../uml.config
-  - cd $(ls -d linux-*)
+  - cd linux-*
   - make allnoconfig
   - make -s vmlinux

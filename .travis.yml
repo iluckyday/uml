@@ -8,7 +8,7 @@ before_install:
   - sudo apt-get -y install ncurses-dev bc bison flex
   - mkdir linux
   - wget -q $(wget -qO- https://www.kernel.org | grep downloadarrow_small.png | cut -d'"' -f2)
-  - tar -xf --strip-components=1 linux-*.tar.xz -C linux
+  - tar --strip-components 1 -xf linux-*.tar.xz -C linux
 
 script:
   - export ARCH=um 

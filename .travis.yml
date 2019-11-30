@@ -13,6 +13,7 @@ before_install:
 script:
   - export ARCH=um 
   - export KCONFIG_ALLCONFIG=../uml.config
+  - export CPUCOUNT=$(grep -c "^processor" /proc/cpuinfo)
   - cd linux
   - make allnoconfig
-  - make -s vmlinux
+  - make -s -j${CPUCOUNT} vmlinux

@@ -6,7 +6,9 @@ compiler: gcc
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get -y install ncurses-dev bc bison flex
-  - git clone --branch=master https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+  - mkdir linux
+  - wget -q $(wget -qO- https://www.kernel.org | grep downloadarrow_small.png | cut -d'"' -f2)
+  - tar -xf --strip-components=1 linux-*.tar.xz -C linux
 
 script:
   - export ARCH=um 

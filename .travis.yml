@@ -6,12 +6,11 @@ compiler: gcc
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get -y install ncurses-dev bc bison flex
-  - wget -q $(wget -qO- https://www.kernel.org | grep downloadarrow_small.png | cut -d'"' -f2)
-  - tar -xf linux-*.tar.xz
+  - git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 
 script:
   - export ARCH=um 
   - export KCONFIG_ALLCONFIG=../uml.config
-  - cd linux-5.4.1
+  - cd linux
   - make allnoconfig
   - make -s vmlinux

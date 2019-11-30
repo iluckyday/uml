@@ -6,7 +6,7 @@ compiler: gcc
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get -y install ncurses-dev bc bison flex
-  - git clone https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
+  - git clone --branch=master https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
 
 script:
   - export ARCH=um 
